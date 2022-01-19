@@ -47,19 +47,21 @@ var saveTasks = function() {
 
 //New Code
 $(".list-group").on("click", "p", function() {
+  // get current text of p element
   var text = $(this)
-  .text()
-  .trim();
+    .text()
+    .trim();
 
-  var textInput = $("<textarea>")
-  .addClass("form-control")
-  .val(text);
-
+  // replace p element with a new textarea
+  var textInput = $("<textarea>").addClass("form-control").val(text);
   $(this).replaceWith(textInput);
+
+  // auto focus new element
   textInput.trigger("focus");
 });
 
 //NewCode
+// editable field was un-focused
 $(".list-group").on("blur", "textarea", function() {
   //get the textarea's current value/text
   var text = $(this)
@@ -79,8 +81,8 @@ $(".list-group").on("blur", "textarea", function() {
   saveTasks();
 
   //recreate p element
-  var taskP = $("p")
-  .addclass("m-1")
+  var taskP = $("<p>")
+  .addClass("m-1")
   .text(text);
   //replace textarea with p element
   $(this).replaceWith(taskP);
